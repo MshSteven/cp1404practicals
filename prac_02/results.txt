@@ -1,0 +1,4 @@
+11 is Bad
+32 is Bad
+61 is Passable
+83 is Passable
