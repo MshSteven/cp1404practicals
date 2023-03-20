@@ -1,6 +1,3 @@
-import random
-
-
 def main():
     filename_01 = "temps_input.txt"
     in_file = open(filename_01, "r")
