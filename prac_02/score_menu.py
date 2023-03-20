@@ -1,11 +1,5 @@
-def display_menu():
-    print("(G)et a valid score")
-    print("(P)rint result")
-    print("(S)how stars")
-    print("(Q)uit")
-
-
 def main():
+    """Display menu and get choice"""
     display_menu()
     choice = input(">>> ").upper()
     score = 0
@@ -27,7 +21,16 @@ def main():
     print("farewell")
 
 
+def display_menu():
+    """Display menu"""
+    print("(G)et a valid score")
+    print("(P)rint result")
+    print("(S)how stars")
+    print("(Q)uit")
+
+
 def get_valid_score():
+    """Get valid score"""
     score = int(input("Enter score: "))
     while score < 0 or score > 100:
         print("Invalid score")
@@ -36,6 +39,7 @@ def get_valid_score():
 
 
 def get_result(score):
+    """Get result"""
     if score < 50:
         result = "Bad"
     elif score < 90:
