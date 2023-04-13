@@ -1,4 +1,5 @@
 def main():
+    """Get data from the csv file and create list dictionary and set. Then display message."""
     filename = "wimbledon.csv"
     wimbledon_datas = get_wimbledon_datas(filename)
     champion_to_count = get_champion_to_count(wimbledon_datas)
@@ -16,6 +17,7 @@ def main():
 
 
 def get_wimbledon_datas(filename):
+    """Preprocess the data"""
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         wimbledon_datas = in_file.readlines()
     del (wimbledon_datas[0])
@@ -23,6 +25,7 @@ def get_wimbledon_datas(filename):
 
 
 def get_champion_to_count(wimbledon_datas):
+    """Get the dictionary."""
     champion_to_count = {}
     for line in wimbledon_datas:
         champion_name = line.split(",")[2]
@@ -34,6 +37,7 @@ def get_champion_to_count(wimbledon_datas):
 
 
 def get_country_set(wimbledon_datas):
+    """Get the set."""
     country_set = set()
     for line in wimbledon_datas:
         country_set.add(line.split(",")[1])
