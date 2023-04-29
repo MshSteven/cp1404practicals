@@ -15,42 +15,41 @@ def main():
     filename = "projects.txt"
     projects = []
 
-    # print(MENU)
-    # option = input(">>> ").lower()
-    # while option != options[-1]:
-    #     if option == options[0]:
-    #         projects = load_projects(filename)
-    #
-    #     if option == options[1]:
-    #         save_projects(filename, projects)
-    #
-    #     if option == options[2]:
-    #         display_projects(projects)
-    #
-    #     if option == options[3]:
-    #         filter_projects_by_date(projects, start_after_date)
-    #
-    #     if option == options[4]:
-    #         add_new_project()
-    #
-    #     if option == options[5]:
-    #         update_project()
-    #
-    #     print(MENU)
-    #     option = input(">>> ").lower()
+    print(MENU)
+    option = input(">>> ").lower()
+    while option != options[-1]:
+        if option == options[0]:
+            projects = load_projects(filename)
 
-    projects = load_projects(filename)
+        if option == options[1]:
+            save_projects(filename, projects)
+
+        if option == options[2]:
+            display_projects(projects)
+
+        if option == options[3]:
+            start_after_date = input("Show projects that start after date (dd/mm/yy):")
+            filter_projects_by_date(projects, start_after_date)
+
+        if option == options[4]:
+            new_project = add_new_project()
+            projects.append(new_project)
+
+        if option == options[5]:
+            update_project(projects)
+
+        print(MENU)
+        option = input(">>> ").lower()
+    print("Thank you for using custom-built project management software.")
+
+    # projects = load_projects(filename)
     # save_projects(filename, projects)
     # display_projects(projects)
-    start_after_date = "20/7/2022"
-    for project in projects:
-        if project.filter_projects_by_date(start_after_date):
-            print(project)
-
-
-def run_test():
-
-    return "projects"
+    # start_after_date = input("Show projects that start after date (dd/mm/yy):")
+    # filter_projects_by_date(projects, start_after_date)
+    # project = add_new_project()
+    # projects.append(project)
+    # update_project(projects)
 
 
 def load_projects(filename):
@@ -82,7 +81,7 @@ def save_projects(filename, projects):
     for project in projects:
         # Below write project's attribute into projects.txt
         name = project.name
-        start_date = project.start_date.strftime("%d/%m/%Y")  # Convert date object into date string.
+        start_date = project.start_date_str
         priority = project.priority
         cost_estimate = project.cost_estimate
         completion_percentage = project.completion_percentage
@@ -104,12 +103,43 @@ def display_projects(projects):
             print(project)
 
 
+def filter_projects_by_date(projects, start_after_date):
+    """Filter project after user input a date, which is sorted by date."""
+    dates = []
+    for project in projects:
+        if project.compare_date_with_input_date(start_after_date):
+            dates.append(project.start_date)
+    dates.sort()
+    for date in dates:
+        for project in projects:
+            if date == project.start_date:
+                print(project)
+
+
 def add_new_project():
-    return ""
+    """Add new project into the projects list."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percent complete: "))
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    return project
 
 
-def update_project():
-    return ""
+def update_project(projects):
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+    project_choice = int(input("Project choice: "))
+    choosed_project = projects[project_choice]
+    new_percentage = input("New Percentage: ")
+    if new_percentage != "":
+        choosed_project.completion_percentage = int(new_percentage)
+    new_priority = input("New Priority: ")
+    if new_priority != "":
+        choosed_project.priority = int(new_priority)
 
 
 main()

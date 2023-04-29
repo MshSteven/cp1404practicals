@@ -27,8 +27,8 @@ class Project:
         """Sort project object by priority."""
         return self.priority < other.priority
 
-    def filter_projects_by_date(self, start_after_date):
-        """Filter project after user input a date."""
-        start_after_date = datetime.datetime.strptime(start_after_date, "%d/%m/%Y").date()
-        return self.start_date >= start_after_date
+    def compare_date_with_input_date(self, start_after_date):
+        """Compare date with the input date."""
+        input_date = datetime.datetime.strptime(start_after_date, "%d/%m/%Y").date()
+        return self.start_date >= input_date
 
