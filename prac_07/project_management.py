@@ -3,7 +3,6 @@ estimate time: 50 minutes
 actual time:
 """
 from prac_07.project import Project
-import datetime
 
 MENU = "- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n" \
        "- (A)dd new project\n- (U)pdate project\n- (Q)uit"
@@ -21,35 +20,28 @@ def main():
         if option == options[0]:
             projects = load_projects(filename)
 
-        if option == options[1]:
+        elif option == options[1]:
             save_projects(filename, projects)
 
-        if option == options[2]:
+        elif option == options[2]:
             display_projects(projects)
 
-        if option == options[3]:
+        elif option == options[3]:
             start_after_date = input("Show projects that start after date (dd/mm/yy):")
             filter_projects_by_date(projects, start_after_date)
 
-        if option == options[4]:
+        elif option == options[4]:
             new_project = add_new_project()
             projects.append(new_project)
 
-        if option == options[5]:
+        elif option == options[5]:
             update_project(projects)
 
+        else:
+            print("Invalid input.")
         print(MENU)
         option = input(">>> ").lower()
     print("Thank you for using custom-built project management software.")
-
-    # projects = load_projects(filename)
-    # save_projects(filename, projects)
-    # display_projects(projects)
-    # start_after_date = input("Show projects that start after date (dd/mm/yy):")
-    # filter_projects_by_date(projects, start_after_date)
-    # project = add_new_project()
-    # projects.append(project)
-    # update_project(projects)
 
 
 def load_projects(filename):
