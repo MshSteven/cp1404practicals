@@ -7,6 +7,7 @@ NEW_COLOUR = (1, 1, 0, 1)  # RGBA for yellow
 
 
 class DynamicLabelsApp(App):
+    """Design an app to show dynamic labels."""
     status_text = StringProperty()
 
     def __init__(self, **msh):
