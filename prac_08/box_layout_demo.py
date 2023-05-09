@@ -11,12 +11,12 @@ class BoxLayoutDemo(App):
         return self.root
 
     def handle_greet(self):
-        """Handle with the button greet"""
+        """Handle with the button greet."""
         print("test")
         self.root.ids.output_label.text = f"Hello {self.root.ids.input_name.text}"
 
     def handle_clear(self):
-        """Handle with the button clear"""
+        """Handle with the button clear."""
         self.root.ids.output_label.text = 'Enter your name'
         self.root.ids.input_name.text = ''
 
