@@ -83,3 +83,11 @@ def format_phrase(phrase):
 phrase = "hello"
 sentence = format_phrase(phrase)
 assert sentence == "Hello", "Sentence does not format the phrase correctly"
+
+phrase = "It is an ex parrot."
+sentence = format_phrase(phrase)
+assert sentence == "It is an ex parrot.", "Sentence does not format the phrase correctly"
+
+phrase = "python is fun."
+sentence = format_phrase(phrase)
+assert sentence == "Python is fun.", "Sentence does not format the phrase correctly"
