@@ -1,11 +1,10 @@
 import wikipedia
-
-ask = input("Enter what you want to search: ")
+ask = input("Enter a searching: ")
 while ask != "":
-    try:
-        ask_page = wikipedia.page(ask, autosuggest=False)
-        print(ask_page.title)
-        print(ask_page.url)
-        print(ask_page.summary)
-    except wikipedia.exceptions.DisambiguationError as e:
-        print(e.options)
+    ask = wikipedia.page(ask, auto_suggest=False)
+    print(ask.title)
+    print(ask.url)
+    print(ask.summary)
+    ask = input("Enter a searching: ")
+
+
